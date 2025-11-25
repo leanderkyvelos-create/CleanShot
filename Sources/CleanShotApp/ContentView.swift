@@ -4,7 +4,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject private var classifier: ScreenshotClassifier
     @State private var selectedItem: PhotosPickerItem?
-    @State private var selectedImage: UIImage?
+    @State private var selectedImage: PlatformImage?
     @State private var isBusy = false
     @State private var errorMessage: String?
 
@@ -26,12 +26,21 @@ struct ContentView: View {
                 }
 
                 if let image = selectedImage {
+                    #if canImport(UIKit)
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 260)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .shadow(radius: 6)
+                    #elseif canImport(AppKit)
+                    Image(nsImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 260)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .shadow(radius: 6)
+                    #endif
                 }
 
                 if isBusy {
@@ -60,7 +69,7 @@ struct ContentView: View {
             selectedImage = nil
             errorMessage = nil
             if let data = try await item.loadTransferable(type: Data.self),
-               let image = UIImage(data: data) {
+               let image = PlatformImage(data: data) {
                 selectedImage = image
                 try await classifier.classify(image: image)
             }

@@ -1,6 +1,5 @@
 import CoreImage
 import CoreImage.CIFilterBuiltins
-import UIKit
 import Vision
 
 enum ScreenshotCategory: String, CaseIterable, Identifiable {
@@ -36,8 +35,14 @@ final class ScreenshotClassifier: ObservableObject {
 
     private let ciContext = CIContext()
 
-    func classify(image: UIImage) async throws {
+    func classify(image: PlatformImage) async throws {
+#if canImport(UIKit)
         guard let cgImage = image.cgImage else { return }
+#elseif canImport(AppKit)
+        guard let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) else { return }
+#else
+        return
+#endif
 
         let textRequest = VNRecognizeTextRequest()
         textRequest.recognitionLevel = .fast
