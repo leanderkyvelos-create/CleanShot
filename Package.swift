@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "CleanShot",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v16)
     ],
     products: [
         .executable(name: "CleanShotApp", targets: ["CleanShotApp"])
@@ -12,10 +12,7 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "CleanShotApp",
-            path: "Sources/CleanShotApp",
-            resources: [
-                .process("Resources")
-            ]
+            path: "Sources/CleanShotApp"
         )
     ]
 )

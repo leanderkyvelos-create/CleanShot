@@ -9,7 +9,7 @@ Eine Offline-App, die Screenshots lokal mit Apple Core ML und Vision auf dem Ger
 - **SwiftUI-Demo:** Auswahl eines Screenshots per `PhotosPicker`, Anzeige der Top-Kategorie und weiterer Treffer.
 
 ## Projektstruktur
-- `Package.swift` – SwiftPM Manifest (iOS 15+).
+- `Package.swift` – SwiftPM Manifest (iOS 16+). Wichtig, weil der integrierte PhotosPicker erst ab iOS 16 verfügbar ist.
 - `Sources/CleanShotApp/` – SwiftUI-App + Klassifizierungs-Engine.
 
 ## Projekt in Xcode öffnen
@@ -19,13 +19,13 @@ Eine Offline-App, die Screenshots lokal mit Apple Core ML und Vision auf dem Ger
 4. Mit **⌘R** bauen & ausführen. Falls Xcode ein Signing-Profil verlangt, im Tab „Signing & Capabilities“ dein Team auswählen.
 
 ## Aufbau
-1. Öffne das Repository in Xcode (iOS 15+). SwiftPM erzeugt die App automatisch.
+1. Öffne das Repository in Xcode (iOS 16+). SwiftPM erzeugt die App automatisch.
 2. Erlaube Fotobibliotheks-Zugriff; wähle einen Screenshot über den "Screenshot wählen"-Button.
 3. Die App führt Vision-Requests offline aus und zeigt Kategorie, Alternativen und Diagnostik (Textblöcke, Helligkeit, Top-Labels).
 
 ## Beta-Release (0.1.0-beta)
 - Status: Öffentliche Beta – voll funktionsfähig, noch ohne automatisierte Tests.
-- Installation: In Xcode über "Product > Run" auf einem iOS-15+-Gerät bzw. Simulator starten.
+- Installation: In Xcode über "Product > Run" auf einem iOS-16+-Gerät bzw. Simulator starten.
 - Fokus: Offline-Klassifizierung, schnelle Heuristiken, einfache UI für Screenshot-Import.
 - Feedback: Bitte Issues für Erkennungsfehler oder Wunsch-Kategorien erstellen.
 
