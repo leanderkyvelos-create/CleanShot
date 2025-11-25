@@ -12,6 +12,12 @@ Eine Offline-App, die Screenshots lokal mit Apple Core ML und Vision auf dem Ger
 - `Package.swift` – SwiftPM Manifest (iOS 15+).
 - `Sources/CleanShotApp/` – SwiftUI-App + Klassifizierungs-Engine.
 
+## Projekt in Xcode öffnen
+1. Repository klonen oder laden: `git clone <repo-url>`.
+2. Im Finder auf `Package.swift` doppelklicken, um das SwiftPM-Paket in Xcode zu öffnen. Alternativ: Xcode starten, **File ▸ Open** und `Package.swift` wählen.
+3. Das Schema **CleanShotApp** auswählen und ein iOS-Simulatorgerät oder ein angeschlossenes iPhone einstellen.
+4. Mit **⌘R** bauen & ausführen. Falls Xcode ein Signing-Profil verlangt, im Tab „Signing & Capabilities“ dein Team auswählen.
+
 ## Aufbau
 1. Öffne das Repository in Xcode (iOS 15+). SwiftPM erzeugt die App automatisch.
 2. Erlaube Fotobibliotheks-Zugriff; wähle einen Screenshot über den "Screenshot wählen"-Button.
